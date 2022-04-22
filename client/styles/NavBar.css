@@ -1,0 +1,16 @@
+.catalogue-links{
+    display: flex;
+}
+.nav-form{
+    display: none;
+}
+@media only screen and (min-width: 575px){
+    .nav-form{
+        display: block;
+        margin-right: 26%;
+        width: 40%;
+    }
+    .navbar-collapse{
+        margin-left: -26px;
+    }
+}
