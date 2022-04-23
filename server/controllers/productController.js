@@ -1,62 +1,68 @@
-const db = require('../kc')
+const model = require('../models/productModel')
 
 module.exports = {
     getAll:(req,res) =>{
-        db.query(
-            "SELECT * FROM products",
-            (err, result) => {
-              res.send(result);
+        model.getAll((err, result) =>{
+            if(err){
+                res.send(err);
+            }else{
+                res.send(result);
             }
-          );
+        })
     },
     getById:(req,res) =>{
-        let id = req.params.id;
-        db.query(
-            "SELECT * FROM products WHERE id = ?",
-            [id],
-            (err, result) => {
-              res.send(result);
+        const id = req.body.id;
+
+        model.getById(id, (err, result) =>{
+            if(err){
+                res.send(err);
+            }else{
+                res.send(result);
             }
-          );
+        })
     },
     getNews:(req,res) =>{
-        db.query(
-            "SELECT * FROM products ORDER BY id DESC LIMIT 4 ",
-            (err, result) =>{
-              res.send(result)
+        model.getNews((err, result) =>{
+            if(err){
+                res.send(err);
+            }else{
+                res.send(result);
             }
-        )
+        })
     },
     getByCat:(req,res) =>{
-        let category = req.params.category
-            db.query(
-                "SELECT * FROM products WHERE category = (?)",
-                [category],
-                (err, result) => {
-                    res.send(result);
-                }
-            );
+        const category = req.body.category;
+
+        model.getByCat(category, (err,result) =>{
+            if(err){
+                res.send(err);
+            }else{
+                res.send(result);
+            }
+        });
     },
     getByPrice:(req,res) =>{
         let price1 = req.params.price1;
         let price2 = req.params.price2;
-        let category = req.params.category
-        db.query(
-            "SELECT * FROM products WHERE category = ? AND price > ? AND price < ?",
-            [category, price1, price2],
-            (err, result) => {
-            res.send(result);
+        let category = req.params.category;
+
+        model.getByPrice(price1,price2,category,(err,result)=>{
+            if(err){
+                res.send(err);
+            }else{
+                res.send(result);
             }
-        );
+        })
     },
     getBySearch:(req,res) =>{
         let product = req.params.product
-        db.query(
-            "SELECT * FROM products WHERE name LIKE  ? " ,
-            [`%${product}%`],
-            (err, result) => {
+        
+        model.getBySearch(product, (err, result) =>{
+            if(err){
+                res.send(err);
+            }else{
                 res.send(result);
             }
-        );
+        });
     },
 }

@@ -26,6 +26,7 @@ const SignUp = () =>{
         "headers": { "Content-type": "application/json" },
         "body": JSON.stringify(author)
     });
+    console.log(result)
     } catch (error) {
       console.log(error);
     }

@@ -33,6 +33,7 @@ app.use('/', categorieRouter)
 const userRouter = require('./routes/user.js')
 app.use('/', userRouter)
 
+
 app.listen(3001, () =>{
     console.log("El servidor corre")
     connecion.connect(function(err){

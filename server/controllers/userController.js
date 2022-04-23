@@ -1,5 +1,5 @@
-const db = require('../kc')
 const bcrypt = require('bcryptjs')
+const model = require('../models/userModel')
 
 module.exports = {
     postUser:(req,res) =>{
@@ -11,42 +11,36 @@ module.exports = {
         bcrypt.hash(password, 8, (err, hash) => {
             if (err) {
             console.log(err);
-            }
-
-        db.query(
-        "INSERT INTO users (name,lastname,email,password,admin) VALUES (?,?,?,?,?)",
-        [name,lastname,email,hash,0],
-        (err, result) => {
-            console.log(result);
         }
-        );
+
+        model.postUser(name,lastname,email,hash,(err,result) =>{
+            if (err){
+                res.send(err);
+            }else{
+                res.send(result);
+            }
+        })
     });
     },
     getUser:(req,res) =>{
         const email = req.body.email;
-        const pass = req.body.password
+        const password = req.body.password;
 
-        db.query(
-            "SELECT * FROM users WHERE email = ?",
-            [email],
-            (error, result) =>{
-                if(error){
-                res.send({error:error})
-                }
-
-                if(result.length  > 0){
-                bcrypt.compare(pass, result[0].password, (error,response) =>{
+        model.getUser(email, (err,result)=>{
+            if(err){
+                res.send(err);
+            }else{   
+                if(result.length > 0)    
+                bcrypt.compare(password, result[0].password, (error,response) =>{
                     if(response){
-                    req.session.user = result;
-                    res.send(result);
+                        req.session.user = result;
+                        res.send(result);
                     }else{
-                    res.send({message: "Wrong email/password combination"})
+                        res.send({message: "Wrong email/password combination"})
                     }
                 })
-                }else{
-                res.send({message: "User doesn't exist"})
-                }
-            });
-        }
+            }
+        })
+    }
 }
 
