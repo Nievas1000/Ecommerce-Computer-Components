@@ -11,7 +11,7 @@ module.exports = {
         })
     },
     getById:(req,res) =>{
-        const id = req.body.id;
+        const id = req.params.id;
 
         model.getById(id, (err, result) =>{
             if(err){
@@ -31,7 +31,7 @@ module.exports = {
         })
     },
     getByCat:(req,res) =>{
-        const category = req.body.category;
+        const category = req.params.category;
 
         model.getByCat(category, (err,result) =>{
             if(err){
@@ -64,5 +64,5 @@ module.exports = {
                 res.send(result);
             }
         });
-    },
+    }
 }

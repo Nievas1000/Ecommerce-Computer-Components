@@ -13,5 +13,19 @@ module.exports={
         }
       }
     );
+  },
+  getById:(id,callback)=>{
+    db.query(
+      "SELECT * FROM categories WHERE id = ?",
+      [id],
+      (err, result) => {
+        if(err){
+          console.log(err);
+          callback(err,null);
+        }else{
+          callback(null,result)
+        }
+      }
+    );
   }
 }
