@@ -86,7 +86,7 @@ const NavBar = () =>{
                 </NavDropdown>
                 </Nav>
                 <Nav>
-                <Nav.Link href="/signup">Login</Nav.Link>
+                <Nav.Link href="/signin">Login</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
             </Container>

@@ -9,6 +9,7 @@ export const CartProvider = ({children}) =>{
     const [cantidad, setCantidad] = useState(0)
     const [carroVisible, setVisibilidad] = useState(false)
     const [totalPrice, setTotalPrice] = useState(0)
+    const [amountProd, setAmountProd] = useState(1);
 
 
     const agregarAlCarro = (product) =>{
@@ -34,7 +35,8 @@ export const CartProvider = ({children}) =>{
         setTotalPrice(totalPrice - product.price)
     }
 
+
     return(
-        <GameContext.Provider value={{carro, cantidad, carroVisible, agregarAlCarro, mostrarCarro, removeFromCart, totalPrice}}>{children}</GameContext.Provider>
+        <GameContext.Provider value={{carro, cantidad, carroVisible, agregarAlCarro, mostrarCarro, removeFromCart, totalPrice,amountProd, setAmountProd}}>{children}</GameContext.Provider>
     )
 }

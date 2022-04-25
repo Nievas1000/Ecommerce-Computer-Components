@@ -1,5 +1,5 @@
 import  Carousel2  from "../components/Carousel"
-import News from "../components/News"
+import Recommended from "../components/Recommended"
 import axios from "axios"
 import { Container } from "react-bootstrap"
 
@@ -8,7 +8,8 @@ const Home = ({products}) => {
     <div>
         <Carousel2 />
         <Container>
-          <News products={products} />
+          <h1>News</h1>
+          <Recommended products={products} />
         </Container>
     </div>
   )
