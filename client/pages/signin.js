@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
+import { usePathName } from '../hooks/usePathNames';
+import { useContext } from 'react';
+import AuthContext from "../context/AuthContext"
+import { useRouter } from 'next/router';
 
 const validate = (values) =>{
   const errors ={}
@@ -14,8 +18,10 @@ const validate = (values) =>{
 }
 
 const SignIn = () =>{
-  const initialValues = {email:'', password:'' }
-
+  usePathName();
+  const initialValues = {email:'', password:'' };
+  const {setIsLogged} = useContext(AuthContext);
+  const router = useRouter();
 
   const loginUser = async (author) =>{
     try {
@@ -23,7 +29,8 @@ const SignIn = () =>{
         email: author.email,
         password: author.password
       });
-      console.log(result)
+      setIsLogged(true);
+      router.back();
     } catch (error) {
       console.log(error);
     }

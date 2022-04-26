@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs')
 const model = require('../models/userModel')
 
+
 module.exports = {
     postUser:(req,res) =>{
         const name = req.body.name;
@@ -8,19 +9,29 @@ module.exports = {
         const email =  req.body.email
         const password = req.body.password;
 
-        bcrypt.hash(password, 8, (err, hash) => {
-            if (err) {
-            console.log(err);
-        }
-
-        model.postUser(name,lastname,email,hash,(err,result) =>{
-            if (err){
+        model.getUser(email, (err, result) =>{
+            if(err){
                 res.send(err);
             }else{
-                res.send(result);
+                if(result.length == 0){
+                    bcrypt.hash(password, 8, (err, hash) => {
+                        if (err) {
+                        console.log(err);
+                    }
+            
+                    model.postUser(name,lastname,email,hash,(err,result) =>{
+                        if (err){
+                            res.send(err);
+                        }else{
+                            res.send(result);
+                        }
+                    })
+                });
+                }else{
+                    res.send({message: "A user with that email has already been registered"})
+                }
             }
         })
-    });
     },
     getUser:(req,res) =>{
         const email = req.body.email;
@@ -41,6 +52,13 @@ module.exports = {
                 })
             }
         })
+    },
+    authUser:(req,res) =>{
+        if(req.session.user){
+            res.send({isLogged: true, user: req.session.user});
+        }else{
+            res.send({isLogged: false});
+        }
     }
 }
 

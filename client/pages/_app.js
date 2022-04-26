@@ -10,15 +10,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from '../components/NavBar'
 import { SSRProvider } from 'react-bootstrap';
 import {CartProvider} from "../context/CartContext"
+import { ContextAuthProvider } from '../context/AuthContext';
 
 function MyApp({ Component, pageProps }) {
   return ( 
     <div>
       <SSRProvider>
-        <CartProvider>
-          <NavBar />
-          <Component {...pageProps} />
-        </CartProvider>
+        <ContextAuthProvider>
+          <CartProvider>
+            <NavBar />
+            <Component {...pageProps} />
+          </CartProvider>
+        </ContextAuthProvider>
       </SSRProvider>
     </div>
   )

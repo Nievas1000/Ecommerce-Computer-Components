@@ -1,11 +1,17 @@
 console.clear()
-const express = require('express')
-const app = express()
-const cors = require('cors')
-const session = require('express-session')
-const connecion = require('./kc')
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const connecion = require('./kc');
+const dotenv = require('dotenv')
 
-app.use(express.json())
+dotenv.config();
+
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+
+app.use(express.json());
 
 app.use(cors({
   origin: ["http://localhost:3000"],
@@ -13,15 +19,20 @@ app.use(cors({
   credentials: true,
 }));
 
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended:true}));
+
 app.use(session({
-  key:"userId",
-  secret: "photo",
+  key: "userId",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false,
   cookie:{
-    maxAge: 365 * 24 * 60 * 60 * 1000
-  }
-}))
+    maxAge: 60 * 60 * 24,
+  },
+}));
+
+
 
 
 const productsRouter = require('./routes/products.js')
