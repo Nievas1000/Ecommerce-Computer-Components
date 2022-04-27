@@ -9,7 +9,7 @@ const Cart = () =>{
     const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => carro.length > 0 ? setShow(true): setShow(false);
 
     return(
         <div className='container_carro'>

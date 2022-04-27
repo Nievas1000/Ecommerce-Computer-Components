@@ -11,7 +11,7 @@ const Carousel2 = () =>{
                         className="d-block w-100"
                         src="/img/publi1.jpg"
                         alt="First slide"
-                        height="600"
+                        height="700"
                         width="2000"
                         />
                         <Carousel.Caption>
@@ -22,7 +22,7 @@ const Carousel2 = () =>{
                         className="d-block w-100"
                         src="/img/publi2.jpg"
                         alt="Second slide"
-                        height="600"
+                        height="700"
                         width="2000"
                         />
                         <Carousel.Caption>
@@ -33,7 +33,7 @@ const Carousel2 = () =>{
                         className="d-block w-100"
                         src="/img/publi3.jpg"
                         alt="Third slide"
-                        height="600"
+                        height="700"
                         width="2000"
                         />
                         <Carousel.Caption>

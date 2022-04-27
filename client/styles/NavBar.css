@@ -4,6 +4,21 @@
 .nav-form{
     display: none;
 }
+.login-nav{
+    width: 1px;
+    margin-left: 7%;
+    margin-top: 8px;
+}
+.login-nav a:hover{
+    color: white;
+}
+.login-nav a{
+    text-decoration: none;
+    color: white;
+}
+.cart-nav{
+    margin-right: -3%;
+}
 @media only screen and (min-width: 575px){
     .nav-form{
         display: block;
@@ -12,5 +27,9 @@
     }
     .navbar-collapse{
         margin-left: -26px;
+    }
+    .login-nav{
+        margin-right: -75px;
+        margin-top: 10px;
     }
 }

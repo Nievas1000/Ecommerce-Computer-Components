@@ -1,7 +1,6 @@
 /* MAIN CARRO */
 .container_carro{
-    margin-left: 289px;
-    margin-top: -45px;
+    margin-left: 29px;
 }
 .carro{
     background-color: transparent;
@@ -60,12 +59,11 @@
     .container_carro{
         position: absolute;
         right: 0;
-        margin-top: -33px;
-        margin-right: 40px;
+        margin-top: -25px;
     }
     .carro{
         padding:15px;
-        margin-right: 90px;
+        margin-right: 40px;
     }
     .bubble{
         left: 20px;

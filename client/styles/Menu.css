@@ -1,0 +1,51 @@
+.menu{
+    background-color: white;
+    position: absolute;
+    box-shadow: 1px 5px 5px rgb(0,0,0,0.3);
+    margin-top: 250px;
+    width: 100%;
+    margin-left: -3.5%;
+    z-index: 1;
+}
+.menu ul{
+    margin:0px;
+    padding:0px;
+    list-style: none;
+}
+.menu ul li{
+    margin: 5px;
+    cursor: pointer;
+}
+.menu ul li a{
+    text-decoration: none;
+    color: black;
+}
+.menu ul li:hover{
+    background-color: rgb(245, 245, 245);
+}
+
+.item-menu{
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    font-size: 20px;
+}
+.item-menu-setting{
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    font-size: 20px;
+    border-bottom: solid 1px gray;
+}
+
+@media only screen and (min-width: 575px){
+    .menu{
+        width: 20%;
+        right: 0;
+        margin-right: 8%;
+        margin-bottom: 25px;
+        border-radius: 5px;
+    }
+}

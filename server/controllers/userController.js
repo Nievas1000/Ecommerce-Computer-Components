@@ -59,6 +59,11 @@ module.exports = {
         }else{
             res.send({isLogged: false});
         }
+    },
+    logout:(req,res)=>{
+        req.session.destroy((err)=>{
+            res.send({massage:"Session closed"})
+        })
     }
 }
 

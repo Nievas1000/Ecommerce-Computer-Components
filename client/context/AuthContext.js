@@ -17,13 +17,14 @@ export function ContextAuthProvider({ children }) {
         console.log(response)
         if(response.data.isLogged){
           router.push('/')
+          saveUser(user)
         }
       } catch (error) {
         console.log(error)
       }
     }
     getUser();
-  },[])
+  },[isLogged])
 
   const saveUser = (user) =>{
     setUser({
