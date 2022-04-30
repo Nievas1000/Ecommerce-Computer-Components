@@ -44,6 +44,9 @@ app.use('/', categorieRouter)
 const userRouter = require('./routes/user.js')
 app.use('/', userRouter)
 
+const useCart = require('./routes/cart.js')
+app.use('/', useCart)
+
 
 app.listen(3001, () =>{
     console.log("El servidor corre")

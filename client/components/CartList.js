@@ -16,12 +16,12 @@ const CartList = ({...props}) =>{
         </Modal.Header>
         <Modal.Body className="detalles" >
         <ul>
-            {carro.map(x =>
+            {carro.length > 0 ? carro.map(x =>
                 <li key={x.id} className="producto">
                     <img alt={x.title} src={x.image} className="img-lista" width={150} height={100}/>
                     {x.name}
                     <button className="button-delete" onClick={() => removeFromCart(x)}>Delete</button>
-                </li>)}
+                </li>): null}
         </ul>
         </Modal.Body>
         <Modal.Footer style={{justifyContent:"left"}}>

@@ -1,5 +1,4 @@
 const model = require('../models/categorieModel')
-const db = require('../kc')
 
 module.exports={
   getAll:(req,res)=>{

@@ -54,6 +54,9 @@ module.exports = {
         })
     },
     authUser:(req,res) =>{
+        if(req.session.cart == undefined){
+            req.session.cart = [];
+        }
         if(req.session.user){
             res.send({isLogged: true, user: req.session.user});
         }else{
