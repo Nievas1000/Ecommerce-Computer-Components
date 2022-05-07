@@ -48,17 +48,18 @@ export const CartProvider = ({children}) =>{
             }
     }
 
-    /*const agregarAlCarro = (product) =>{
-        if(carro.find(x => x.id === product.id)){
-            return alert("You already have this game in your cart")
+    const savedProd = async (product, user) =>{
+        console.log(product,user)
+        try {
+            let result = await axios.post('http://localhost:3001/saved',{
+                prod:product,
+                user:user[0]
+            })
+        } catch (error) {
+            console.log(error)
         }
-        setCarro([
-            ...carro,
-            product,
-        ])
-        setCantidad(cantidad + 1)
-        setTotalPrice(totalPrice + product.price)
-    }*/
+    }
+   
     const mostrarCarro = () =>{
         setVisibilidad(!carroVisible)
     }
@@ -73,6 +74,6 @@ export const CartProvider = ({children}) =>{
 
 
     return(
-        <GameContext.Provider value={{carro, cantidad, carroVisible, agregarAlCarro, mostrarCarro, removeFromCart, totalPrice,amountProd, setAmountProd}}>{children}</GameContext.Provider>
+        <GameContext.Provider value={{carro, cantidad, carroVisible, agregarAlCarro, mostrarCarro, removeFromCart, totalPrice,amountProd, setAmountProd, savedProd}}>{children}</GameContext.Provider>
     )
 }

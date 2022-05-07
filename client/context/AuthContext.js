@@ -16,8 +16,8 @@ export function ContextAuthProvider({ children }) {
         let response = await axios.get('http://localhost:3001/login');
         console.log(response)
         if(response.data.isLogged){
-          router.push('/')
-          saveUser(user)
+          setIsLogged(true)
+          saveUser(response.data.user)
         }
       } catch (error) {
         console.log(error)
@@ -32,7 +32,7 @@ export function ContextAuthProvider({ children }) {
     })
   }
   return (
-    <Context.Provider value={{isLogged, setIsLogged}}>
+    <Context.Provider value={{isLogged, setIsLogged, user}}>
       {children}
     </Context.Provider>
   );

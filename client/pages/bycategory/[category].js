@@ -5,12 +5,14 @@ import Link from "next/link"
 import { useState } from "react"
 import { FloatingLabel, Form } from "react-bootstrap"
 import { Button } from "react-bootstrap"
+import { useRouter } from "next/router";
 
 const ProdsByCat = ({products, categories}) =>{
     const [prices, setPrices] = useState({price1:'',price2:''})
     const [productsByPrice, setProductsByPrice] = useState([])
     const [amountProds, setAmountProds] = useState(products.length)
     const category = products[0].category
+    const router = useRouter()
 
     const getPrices = async() =>{
         try {

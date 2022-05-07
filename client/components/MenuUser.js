@@ -27,7 +27,7 @@ const MenuUser = () =>{
         <div className="menu">
             <ul>    
                 <li className="item-menu"><CgProfile style={{fontSize:25, marginRight:10}} /> <Link href="/profile">Profile</Link> </li>
-                <li className="item-menu"><BsSave2 style={{fontSize:25, marginRight:10}} />Saved</li>
+                <li className="item-menu"><BsSave2 style={{fontSize:25, marginRight:10}} /><Link href="/saved">Saved</Link></li>
                 <li className="item-menu-setting"><IoSettingsOutline style={{fontSize:25, marginRight:10}} />Settings</li>
                 <li className="item-menu" onClick={closeSession}> <CgLogOut style={{fontSize:25, marginRight:10}} />Log off</li>
             </ul>

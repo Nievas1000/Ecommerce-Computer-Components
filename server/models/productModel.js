@@ -79,5 +79,18 @@ module.exports = {
                 }
             }
         );
+    },
+    savedProduct:(id_user, id_product, callback) =>{
+        db.query('INSERT INTO products_saved(id_user, id_product) VALUES (?,?)',
+        [id_user, id_product],
+        (err, result) => {
+            if(err){
+                console.log(err)
+                callback(err,null);
+            }else{
+                callback(null,result);
+            }
+        }
+        )
     }
 }

@@ -1,8 +1,11 @@
 import { Card, Button } from "react-bootstrap"
 import {useGame} from "../context/CartContext"
 import Link from "next/link"
+import AuthContext from "../context/AuthContext"
+import { useContext } from "react"
 
 const CardProducts = ({product}) => {
+  const {isLogged} = useContext(AuthContext)
   const {agregarAlCarro} = useGame()
     return (
       <div className="card-new">
@@ -13,7 +16,7 @@ const CardProducts = ({product}) => {
               <Card.Text>
               Price: ${product.price}
               </Card.Text>
-              <Button style={{width:'100%'}} variant="primary" onClick={() => agregarAlCarro(product)}>Add to cart</Button>
+              {isLogged ? <Button style={{width:'100%'}} variant="primary" onClick={() => agregarAlCarro(product)}>Add to cart</Button> : null}
             </Card.Body>
           </Card>}
       </div>

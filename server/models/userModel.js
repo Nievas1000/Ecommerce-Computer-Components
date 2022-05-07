@@ -2,6 +2,7 @@ const db = require('../kc')
 
 module.exports = {
     postUser:(name,lastname,email,password,callback)=>{
+        console.log(name)
         db.query(
             "INSERT INTO users (name,lastname,email,password,admin) VALUES (?,?,?,?,?)",
             [name,lastname,email,password,0],

@@ -64,5 +64,17 @@ module.exports = {
                 res.send(result);
             }
         });
+    },
+    savedProduct:(req,res) =>{
+        const id_prod = req.body.prod.id;
+        const id_user = req.body.user.id;
+
+        model.savedProduct(id_user,id_prod, (err, result) =>{
+            if(err){
+                res.send(err);
+            }else{
+                res.send(result);
+            }
+        })
     }
 }

@@ -14,6 +14,8 @@ router.get('/searchbyprice/:price1/:price2/:category', controller.getByPrice)
 
 router.get('/searchprod/:product', controller.getBySearch)
 
+router.post('/saved', controller.savedProduct)
+
 
 module.exports = router
 
